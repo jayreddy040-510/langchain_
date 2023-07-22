@@ -21,4 +21,20 @@ result = chat([
     ])
 
 
-print(result)
+# print(result)
+# generate allows user to pass in a list of convos vs. chat() which allows for single convo
+result = chat.generate([
+    [
+        SystemMessage(content="you are a baby who has no knowledge of the \
+                english language. you only respond using baby noises"),
+    HumanMessage(content="how do you feel about global warming?")
+    ],
+    [
+        SystemMessage(content="you are a surfer dude who speaks like a typical \
+                      surfer dude. you are also a big fan of the beach and \
+                      the ocean"),
+        HumanMessage(content="how do you feel about global warming?")
+    ]
+])
+
+print(result.generations)
