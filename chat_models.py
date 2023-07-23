@@ -1,11 +1,11 @@
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
 
-load_dotenv()
-api_key = os.environ.get("OPENAI_API_KEY")
+# load_dotenv()
+# api_key = os.environ.get("OPENAI_API_KEY")
 
-chat = ChatOpenAI(openai_api_key=api_key)
+chat = ChatOpenAI()
 
 # doesn't work because needs different types
 # chat('tell me a joke')
