@@ -19,7 +19,16 @@ response = client.chat.completions.create(
         {"role": "assistant", "content": "Yes, customer managed keys are supported by Azure OpenAI."},
         {"role": "user", "content": "Do other Azure AI services support this too?"}
     ],
+    stream=True
 )
 
+accumulated_content = "" 
+for choice in response:
+    print(time.time() - start_time)
+    content = choice.choices[0].delta.content
+    if content is not None:
+        accumulated_content += content
+        print(accumulated_content, "\n", flush=True)
 
-print(response.choices, time.time() - start_time)
+    if choice.choices[0].finish_reason == 'stop':
+        break
